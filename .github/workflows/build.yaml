@@ -141,7 +141,7 @@ jobs:
                 password: ${{ secrets.GITHUB_TOKEN }}
             - name: Build Servoy test image
               run: |
-                docker build -t ServoyComponents/servoy_tester:${{matrix.version}} --build-arg DEVELOPER_VERSION_BUILD=${{matrix.version}} developer-tester
+                docker build -t ghcr.io/ServoyComponents/servoy_tester:${{matrix.version}} --build-arg DEVELOPER_VERSION_BUILD=${{matrix.version}} developer-tester
             - name: Push Servoy test image
               run: |
-                docker push ServoyComponents/servoy_tester:${{matrix.version}}
+                docker push ghcr.io/ServoyComponents/servoy_tester:${{matrix.version}}
