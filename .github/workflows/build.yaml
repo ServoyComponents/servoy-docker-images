@@ -127,6 +127,8 @@ jobs:
                     - "2025.09.1.4103"
                     - "2025.12.4122"
                     - "2025.12.1.4123"
+                    - "nightly"
+                    - "nightly-lts"
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -139,4 +141,7 @@ jobs:
                 password: ${{ secrets.GITHUB_TOKEN }}
             - name: Build Servoy test image
               run: |
-                docker build docker build -t ServoyComponents/servoy_tester:${{matrix.version}} --build-arg DEVELOPER_VERSION_BUILD=${{matrix.version}} developer-tester
+                docker build -t ServoyComponents/servoy_tester:${{matrix.version}} --build-arg DEVELOPER_VERSION_BUILD=${{matrix.version}} developer-tester
+            - name: Push Servoy test image
+              run: |
+                docker push ServoyComponents/servoy_tester:${{matrix.version}}
