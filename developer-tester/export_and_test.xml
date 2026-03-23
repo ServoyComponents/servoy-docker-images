@@ -249,6 +249,8 @@
                 <sysproperty key="servoy.test.property-file" value="${servoy.test.property.file}" />
                 <!-- <sysproperty key="servoy.test.target-file-ext" value=".servoy" /> -->
 
+                <env key="SERVOY_JSUNIT_GHA_RUNNER" value="yes" />
+
                 <formatter type="brief" usefile="false" />
                 <formatter type="xml" />
 
