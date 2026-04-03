@@ -3,7 +3,7 @@ ARG DEVELOPER_VERSION_BUILD
 FROM ghcr.io/itechpros/servoy_installer:${DEVELOPER_VERSION_BUILD}
 
 RUN dnf install -y wget xorg-x11-server-Xvfb openbox procps && \
-    wget --output-document=/tmp/apache-ant.tar.gz https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.15-bin.tar.gz && \
+    wget --output-document=/tmp/apache-ant.tar.gz https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.16-bin.tar.gz && \
     mkdir -p /usr/local/lib/apache-ant && \
     tar xzf /tmp/apache-ant.tar.gz --strip-components=1 --directory=/usr/local/lib/apache-ant && \
     mkdir -p /usr/local/lib/apache-ant-contrib/ && \
