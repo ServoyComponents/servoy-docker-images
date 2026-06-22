@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- Works with Ant 1.7.0 and higher -->
-<project basedir=".">
+<project basedir="." xmlns:if="ant:if">
 
     <property file="export_and_test_personal.properties"/>
     <property file="export_and_test.properties"/>
@@ -52,9 +52,6 @@
             </condition>
             <condition property="arg.verbose" value="-verbose">
                 <isset property="servoy.export.flags.verbose" />
-            </condition>
-            <condition property="arg.es6" value="-Dservoy.useES6">
-                <isset property="servoy.export.flags.es6" />
             </condition>
 
             <!-- Conditional build options (values) -->
@@ -119,7 +116,7 @@
                     resultproperty="export.result"
                     fork="true">
                 <jvmarg value="-Dosgi.configuration.cascaded=false" />
-                <jvmarg line="${arg.es6}" />
+                <jvmarg value="-Dservoy.useES6" if:set="servoy.export.flags.es6"/>
 
                 <arg value="-application" />
                 <arg value="com.servoy.eclipse.exporter.solution.application" />
