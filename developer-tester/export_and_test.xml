@@ -109,6 +109,9 @@
             <condition property="arg.ng2" value="-ng2 ${servoy.export.options.ng2}">
                 <isset property="servoy.export.options.ng2" />
             </condition>
+            <condition property="arg.es6" value="-Dservoy.useES6">
+                <isset property="servoy.export.flags.es6" />
+            </condition>
 
             <java   classname="org.eclipse.equinox.launcher.Main"
                     classpathref="equinox.launcher.jar.location"
@@ -150,6 +153,7 @@
                 <arg line="${arg.allow_sql_keywords}" />
                 <arg line="${arg.ng1}" />
                 <arg line="${arg.verbose}" />
+                <arg line="${arg.es6}" />
 
                 <!-- conditional options (values) -->
                 <arg line="${arg.beans}" />
