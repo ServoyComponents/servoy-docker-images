@@ -53,6 +53,9 @@
             <condition property="arg.verbose" value="-verbose">
                 <isset property="servoy.export.flags.verbose" />
             </condition>
+            <condition property="arg.es6" value="-Dservoy.useES6">
+                <isset property="servoy.export.flags.es6" />
+            </condition>
 
             <!-- Conditional build options (values) -->
             <condition property="arg.beans" value="-b ${servoy.export.options.beans}">
@@ -109,9 +112,6 @@
             <condition property="arg.ng2" value="-ng2 ${servoy.export.options.ng2}">
                 <isset property="servoy.export.options.ng2" />
             </condition>
-            <condition property="arg.es6" value="-Dservoy.useES6">
-                <isset property="servoy.export.flags.es6" />
-            </condition>
 
             <java   classname="org.eclipse.equinox.launcher.Main"
                     classpathref="equinox.launcher.jar.location"
@@ -119,6 +119,7 @@
                     resultproperty="export.result"
                     fork="true">
                 <jvmarg value="-Dosgi.configuration.cascaded=false" />
+                <jvmarg line="${arg.es6}" />
 
                 <arg value="-application" />
                 <arg value="com.servoy.eclipse.exporter.solution.application" />
@@ -153,7 +154,6 @@
                 <arg line="${arg.allow_sql_keywords}" />
                 <arg line="${arg.ng1}" />
                 <arg line="${arg.verbose}" />
-                <arg line="${arg.es6}" />
 
                 <!-- conditional options (values) -->
                 <arg line="${arg.beans}" />
